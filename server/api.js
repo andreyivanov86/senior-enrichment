@@ -4,17 +4,41 @@ const db = require('../db');
 // const models = require('../db/models')
 // const Student = models.Student;
 // const Campus = models.Campus;
-console.log(db.models)
+
 // If you aren't getting to this object, but rather the index.html (something with a joke) your path is wrong.
 	// I know this because we automatically send index.html for all requests that don't make sense in our backend.
 	// Ideally you would have something to handle this, so if you have time try that out!
 //api.get('/hello', (req, res) => res.send({hello: 'world'}))
 
-api.get('/campuses', (req, res, next) => {
+api.get('/campus', (req, res, next) => {
 	db.models.campus.findAll({include: [{all: true}]})
 	.then(campus => {
-		res.send(campus)
+		res.json(campus)
 	})
+	.catch(next)
+});
+
+api.get('/campus/:id', (req, res, next) => {
+	db.models.campus.findById(req.params.id)
+	.then(campus => res.json(campus))
+	.catch(next)
+});
+
+api.get('/student', (req, res, next) => {
+	db.models.student.findAll({include: [{all: true}]})
+	.then(students => {
+	res.json(students)
+	})
+	.catch(next)
 })
+
+api.get('/student/:id', (req, res, next) => {
+	db.models.student.findById((req.params.id))
+	.then(student => {
+		res.json(student)
+	})
+	.catch(next)
+})
+
 
 module.exports = api
