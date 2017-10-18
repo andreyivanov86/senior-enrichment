@@ -32,8 +32,17 @@ api.get('/campus/:id', (req, res, next) => {
 });
 
 api.post('/campus', (req, res, next) => {
+	console.log('!!!!', req.body)
 	db.models.campus.create(req.body)
 	.then(newCampus => res.status(201).json(newCampus))
+	.catch(next)
+})
+
+api.get('/student', (req, res, next) => {
+	db.models.student.findAll()
+	.then(students => {
+	res.json(students)
+	})
 	.catch(next)
 })
 
@@ -54,9 +63,8 @@ api.get('/student/:id', (req, res, next) => {
 })
 
 api.post('/student', (req, res, next) => {
-	db.models.student.create({name: 'Roman'})
+	db.models.student.create(req.body)
 	.then(newStudent => {res.status(201).json(newStudent)})
 })
 
-
-module.exports = api
+module.exports = api;

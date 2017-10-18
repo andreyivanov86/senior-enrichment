@@ -9,7 +9,6 @@ const Campus = db.define('campus', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      unique: true
     }
   },
   url: {
