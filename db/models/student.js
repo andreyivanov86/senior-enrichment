@@ -5,8 +5,11 @@ const DataTypes = db.Sequelize;
 
 const Student = db.define('student', {
   name: {
-    type: DataTypes.STRING(1e4),
+    type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   }
 });
 
