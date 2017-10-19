@@ -1,36 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import CampusItem from './Campus';
-import StudentItem from './Student';
-import store from '../store';
+import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Navbar from './Header';
+import Campuses from './Campuses';
+import Students from './Students';
 
-console.log(store)
+export default class Main extends Component {
 
-const App = (props) => {
-  return (
-
-    <div>
-      { props.campuses && props.campuses.map(campus =>
-          <CampusItem key={campus.id} campus={campus} />
-      )}
-    </div>
-    // <div>
-    //   {
-    //     props.students && props.students.map(student =>
-    //       (
-    //         <StudentItem key={student.id} student={student} />
-    //       )
-    //     )
-    //   }
-    // </div>
-  )
-};
-
-const mapStateToProps = (state) => {
-  return {
-    campuses: state.campuses,
-    students: state.students
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <main>
+          <Switch>
+            <Route path='/campuses' component={Campuses} />
+            <Route path='/students' component={Students} />
+            <Redirect to="/campuses" />
+          </Switch>
+        </main>
+      </div>
+    )
   }
-}
 
-export default connect(mapStateToProps)(App);
+}

@@ -1,21 +1,24 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import store from '../store';
-
-// const CampusItem = (props) => {
-//   return (
-//     <div>
-//       {props.campus.name}
-//     </div>
-//   )
-// }
+import { connect } from 'react-redux';
 
 
-
-const mapStateToProps = (state) => {
-  return {
-    campuses: state.campuses
-  }
+function Campus (props) {
+  const campus = props.campus;
+  return (
+    <li>
+      <div>
+        <h4>
+          {campus.name}
+        </h4>
+      </div>
+    </li>
+  )
 }
 
-export default connect(mapStateToProps)(Campus);
+// const mapStateToProps = function(state) {
+//   return {
+//     campuses: state.campuses
+//   }
+// }
+
+export default Campus;

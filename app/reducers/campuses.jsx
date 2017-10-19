@@ -14,10 +14,7 @@ export function fetchCampuses() {
 
   return function thunk(dispatch) {
     return axios.get('/api/campus')
-      .then(result => {
-        console.log('REsult')
-        return result.data;
-      })
+      .then(result => result.data)
       .then(campuses => {
         const action = getCampuses(campuses);
         dispatch(action)
@@ -29,7 +26,7 @@ export function fetchCampuses() {
 export default function campusReducer(state = initialState, action) {
   switch (action.type) {
     case GET_CAMPUSES:
-      return action.campus
+      return action.campuses
     default: return state
   }
 }

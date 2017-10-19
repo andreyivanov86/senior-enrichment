@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const StudentItem = (props) => {
+function Student (props) {
+
+  const student = props.student;
   return (
-    <div >
-      {props.student.name}
-    </div>
+    <li>
+      <div>
+        {}
+      </div>
+    </li>
   )
+
 }
 
-export default StudentItem;
+export default Student;
