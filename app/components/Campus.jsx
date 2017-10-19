@@ -1,17 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import CampusStudent from './CampusStudent';
 
 
-function Campus (props) {
+function Campus(props) {
   const campus = props.campus;
   return (
-    <li>
-      <div>
-        <h4>
-          {campus.name}
-        </h4>
-      </div>
-    </li>
+    <h4>
+      {campus.name}
+    </h4>
   )
 }
 

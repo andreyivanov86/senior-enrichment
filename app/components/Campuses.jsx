@@ -14,13 +14,11 @@ class Campuses extends Component {
     const { campuses } = this.props;
     return (
       <div>
-        <ul>
           {
             campuses && campuses.map(campus =>
-              <Campus campus={campus} key={campus.id} />)
-
+              <Campus campus={campus} key={campus.id} />
+            )
           }
-        </ul>
       </div>
     )
   }
