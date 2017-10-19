@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchStudents } from '../reducers/students'
 
-
 class Students extends Component {
 
   componentDidMount() {
@@ -17,7 +16,6 @@ class Students extends Component {
         <NavLink to={'/add-student'}>
           <button>Add Student</button>
         </NavLink>
-        <ul>
           {
             students && students.map(student => {
               return (
@@ -28,7 +26,6 @@ class Students extends Component {
               )
             })
           }
-        </ul>
       </div>
     )
   }
