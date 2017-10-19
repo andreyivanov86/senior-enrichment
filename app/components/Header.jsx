@@ -1,12 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-function Navbar (props) {
+function Navbar(props) {
 
   return (
     <nav>
-      <button>Campus</button>
-      <button>Students</button>
+      <NavLink to={'./Campuses'}>
+        <button>Campus</button>
+      </NavLink>
+      <NavLink to={'./Students'}>
+        <button>Students</button>
+      </NavLink>
     </nav>
   )
 }
