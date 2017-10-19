@@ -7,7 +7,7 @@ function Student (props) {
   return (
     <li>
       <div>
-        {}
+        {student.name}
       </div>
     </li>
   )

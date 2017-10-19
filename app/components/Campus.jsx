@@ -15,10 +15,4 @@ function Campus (props) {
   )
 }
 
-// const mapStateToProps = function(state) {
-//   return {
-//     campuses: state.campuses
-//   }
-// }
-
 export default Campus;

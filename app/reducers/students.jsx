@@ -2,11 +2,11 @@ import axios from 'axios';
 
 const initialState = [];
 // Action Types
-export const GET_STUDENT = 'GET_STUDENT';
+export const GET_STUDENTS = 'GET_STUDENTS';
 
 // Action Creator
 export function getStudents(students) {
-  const action = { type: GET_STUDENT, students }
+  const action = { type: GET_STUDENTS, students }
   return action;
 }
 // Thunk Creator
@@ -25,7 +25,7 @@ export function fetchStudents() {
 // Reducer
 export default function studentReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_STUDENT:
+    case GET_STUDENTS:
       return action.students
     default: return state
   }

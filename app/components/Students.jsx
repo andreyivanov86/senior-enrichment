@@ -3,26 +3,30 @@ import {connect} from 'react-redux';
 import { fetchStudents } from '../reducers/students'
 import Student from './Student';
 
-
 class Students extends Component {
 
-  ComponentDidMount() {
+  componentDidMount() {
     this.props.getStudents();
   }
 
-
   render() {
     const { students } = this.props;
-    console.log(students)
     return (
-      <div></div>
+      <div>
+        <ul>
+          {
+            students && students.map(student =>
+              <Student student={student} key={student.id} />)
+          }
+        </ul>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    campuses: state.campuses
+    students: state.students
   }
 }
 
