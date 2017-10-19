@@ -3,12 +3,18 @@ import axios from 'axios';
 const initialState = [];
 // Action Types
 export const GET_STUDENTS = 'GET_STUDENTS';
+//export const GET_STUDENTS_FOR_CAMPUS = 'GET_STUDENTS_FOR_CAMPUS';
 
 // Action Creator
 export function getStudents(students) {
   const action = { type: GET_STUDENTS, students }
   return action;
 }
+// export function getStudentsForCampus(students) {
+//   const action = { type: GET_STUDENTS_FOR_CAMPUS, students}
+//   return action
+// }
+
 // Thunk Creator
 export function fetchStudents() {
 

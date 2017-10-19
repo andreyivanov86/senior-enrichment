@@ -30,7 +30,8 @@ api.get('/campus/:id', (req, res, next) => {
 });
 
 api.get('/campus/:campusId/students', (req, res, next) => {
-	db.models.student.findAll({
+	db.models.student.findAll(
+		{
 		where: {
 			campusId: req.params.campusId
 		}
