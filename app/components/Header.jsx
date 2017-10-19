@@ -6,10 +6,10 @@ function Navbar(props) {
 
   return (
     <nav>
-      <NavLink to={'./Campuses'}>
+      <NavLink to={'/campuses'}>
         <button>Campus</button>
       </NavLink>
-      <NavLink to={'./Students'}>
+      <NavLink to={'/students'}>
         <button>Students</button>
       </NavLink>
     </nav>

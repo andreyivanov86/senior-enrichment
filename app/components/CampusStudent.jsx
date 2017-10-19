@@ -15,9 +15,7 @@ class CampusStudent extends Component {
     const campusesArr = this.props.campuses;
     const campusId = Number(this.props.match.params.id);
     const studentsArr = this.props.students;
-    // console.log('campuses', campusesArr)
-    // console.log('campuses ID', campusId)
-    // console.log('student Array', studentsArr)
+
     let studentsForCampus = [];
     studentsForCampus = studentsArr.filter(student => student.campusId === campusId);
 

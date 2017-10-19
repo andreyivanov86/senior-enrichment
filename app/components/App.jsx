@@ -4,6 +4,7 @@ import Navbar from './Header';
 import Campuses from './Campuses';
 import Students from './Students';
 import CampusStudent from './CampusStudent';
+import AddStudent from './AddStudent';
 
 export default class Main extends Component {
 
@@ -13,14 +14,14 @@ export default class Main extends Component {
         <Navbar />
         <main>
           <Switch>
+            <Route path='/add-student' component={AddStudent} />
             <Route path='/campuses/:id' component={CampusStudent} />
             <Route path='/campuses' component={Campuses} />
             <Route path='/students' component={Students} />
-            <Redirect to="/campuses" />
+            {/* <Redirect to="/campuses" /> */}
           </Switch>
         </main>
       </div>
     )
   }
-
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { fetchStudents } from '../reducers/students'
-import Student from './Student';
+
 
 class Students extends Component {
 
@@ -13,10 +14,13 @@ class Students extends Component {
     const { students } = this.props;
     return (
       <div>
+        <NavLink to={'/add-student'}>
+          <button>Add Student</button>
+        </NavLink>
         <ul>
           {
             students && students.map(student =>
-              <Student student={student} key={student.id} />)
+              <div key={student.id}>{student.name}</div>)
           }
         </ul>
       </div>
