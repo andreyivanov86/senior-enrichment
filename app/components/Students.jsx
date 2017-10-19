@@ -19,8 +19,14 @@ class Students extends Component {
         </NavLink>
         <ul>
           {
-            students && students.map(student =>
-              <div key={student.id}>{student.name}</div>)
+            students && students.map(student => {
+              return (
+                <div>
+                  <div key={student.id}>{student.name}</div>
+                  <button>X</button>
+                </div>
+              )
+            })
           }
         </ul>
       </div>
