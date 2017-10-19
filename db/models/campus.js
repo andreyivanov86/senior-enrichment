@@ -17,4 +17,10 @@ const Campus = db.define('campus', {
   }
 });
 
+Campus.prototype.getStudents = () => [
+  db.model('student').findAll({
+    where: {campusId: this.id}
+  })
+]
+
 module.exports = Campus;

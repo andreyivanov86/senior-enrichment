@@ -29,6 +29,16 @@ api.get('/campus/:id', (req, res, next) => {
 	.catch(next)
 });
 
+api.get('/campus/:campusId/students', (req, res, next) => {
+	db.models.student.findAll({
+		where: {
+			campusId: req.params.campusId
+		}
+	})
+	.then(students => res.json(students))
+	.catch(next)
+})
+
 api.post('/campus', (req, res, next) => {
 	db.models.campus.create(req.body)
 	.then(newCampus => res.status(201).json(newCampus))

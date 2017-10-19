@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchCampuses } from '../reducers/campuses';
 import Campus from './Campus';
+import CampusStudent from './CampusStudent';
 
 class Campuses extends Component {
 
@@ -14,11 +15,18 @@ class Campuses extends Component {
     const { campuses } = this.props;
     return (
       <div>
-          {
-            campuses && campuses.map(campus =>
-              <Campus campus={campus} key={campus.id} />
+        {
+          campuses && campuses.map(campus => {
+            return (
+              <div key={campus.id}>
+                <NavLink to={'./CampusStudent'}>
+                <span>{campus.name}</span>
+                  {/* <Campus campus={campus} key={campus.id} /> */}
+                </NavLink>
+              </div>
             )
-          }
+          })
+        }
       </div>
     )
   }
