@@ -17,15 +17,22 @@ class AddStudent extends Component {
       <div>
         <div> Add Student </div>
         <div>
-          <label>Select Campus</label>
-          <select name="campusName">
+
+          {/* <select name="campusName">
             {
               //add campuses to option list
               campuses && campuses.map(campus => <option key={campus.id}>{campus.name}</option>)
             }
-          </select>
+          </select> */}
         </div>
         <form onSubmit={this.props.handleSubmit}>
+          <label>Select Campus</label>
+          <select name="campusName" >
+            {
+              //add campuses to option list
+              campuses && campuses.map(campus => <option key={campus.id} value={campus.id}>{campus.name}</option>)
+            }
+          </select>
           <input
             placeholder="Enter Name"
             type="text"
@@ -53,9 +60,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSubmit(event) {
       event.preventDefault();
-      // console.log(event.target.cmapusName.value)
+      //console.log(event.target.campusName.value)
       dispatch(postStudent({
         name: event.target.studentName.value,
+        campusId: event.target.campusName.value
       }))
     }
   }
