@@ -21,8 +21,6 @@ class CampusStudent extends Component {
       return campus.id === campusId
     })
 
-    // console.log('selected', selectedCampus.name)
-
     let studentsForCampus = [];
     studentsForCampus = studentsArr.filter(student => student.campusId === campusId);
 

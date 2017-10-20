@@ -33,7 +33,7 @@ if (module === require.main) {
         * In 'api.js', note how `module` (this specific file - i.e. module) is different from `require.main` because this is NOT the file we started in and `require.main` is the file we started in
           ~ To help compare these objects, reference each of their `id` attributes
   */
-  // console.log(module)
+
   const PORT = 1337
 
   const db = require('../db')

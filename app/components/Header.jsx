@@ -7,7 +7,7 @@ function Navbar(props) {
   return (
     <nav>
       <NavLink to={'/campuses'}>
-        <button>Campus</button>
+        <button>Campuses</button>
       </NavLink>
       <NavLink to={'/students'}>
         <button>Students</button>
@@ -18,10 +18,3 @@ function Navbar(props) {
 
 export default Navbar;
 
-// const mapStateToProps = function (state) {
-//   return {
-//     currentMain: state.currentMain
-//   }
-// }
-
-// export default connect(mapStateToProps)(Navbar)

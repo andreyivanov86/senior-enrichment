@@ -6,6 +6,7 @@ import Students from './Students';
 import CampusStudent from './CampusStudent';
 import AddStudent from './AddStudent';
 
+// The main View
 export default class Main extends Component {
 
   render() {
