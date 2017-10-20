@@ -7,11 +7,9 @@ class AddStudent extends Component {
 
   componentDidMount() {
     this.props.getCampuses();
-    //this.props.postStudent();
   }
 
   render() {
-    console.log(this.props)
     const campuses = this.props.campuses;
     return (
       <div>

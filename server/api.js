@@ -75,4 +75,16 @@ api.post('/student', (req, res, next) => {
 	.then(newStudent => {res.status(201).json(newStudent)})
 })
 
+api.delete('/student/:id', (req, res, next) => {
+	db.models.student.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+	.then(() => {
+		res.sendStatus(204)
+	})
+	.catch(next)
+})
+
 module.exports = api;

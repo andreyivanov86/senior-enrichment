@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { fetchStudents } from '../reducers/students'
+import { fetchStudents, deleteStudent } from '../reducers/students'
 
 class Students extends Component {
 
@@ -21,7 +21,7 @@ class Students extends Component {
               return (
                 <div>
                   <div key={student.id}>{student.name}</div>
-                  <button>X</button>
+                  <button value={student.id} onClick={this.props.handleClick}>X</button>
                 </div>
               )
             })
@@ -41,6 +41,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getStudents() {
       dispatch(fetchStudents())
+    },
+    handleClick(event) {
+      event.preventDefault();
+      const studentId = Number(event.target.value);
+      dispatch(deleteStudent(studentId))
     }
   }
 }
