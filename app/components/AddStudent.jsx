@@ -16,15 +16,6 @@ class AddStudent extends Component {
     return (
       <div>
         <div> Add Student </div>
-        <div>
-
-          {/* <select name="campusName">
-            {
-              //add campuses to option list
-              campuses && campuses.map(campus => <option key={campus.id}>{campus.name}</option>)
-            }
-          </select> */}
-        </div>
         <form onSubmit={this.props.handleSubmit}>
           <label>Select Campus</label>
           <select name="campusName" >
@@ -42,9 +33,7 @@ class AddStudent extends Component {
         </form>
       </div>
     )
-
   }
-
 }
 
 const mapStateToProps = (state) => {
@@ -60,7 +49,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSubmit(event) {
       event.preventDefault();
-      //console.log(event.target.campusName.value)
       dispatch(postStudent({
         name: event.target.studentName.value,
         campusId: event.target.campusName.value

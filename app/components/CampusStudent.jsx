@@ -16,12 +16,21 @@ class CampusStudent extends Component {
     const campusId = Number(this.props.match.params.id);
     const studentsArr = this.props.students;
 
+    let selectedCampus;
+    selectedCampus = campusesArr.find(campus => {
+      return campus.id === campusId
+    })
+
+    // console.log('selected', selectedCampus.name)
+
     let studentsForCampus = [];
     studentsForCampus = studentsArr.filter(student => student.campusId === campusId);
 
     return (
       <div>
-        <h4>{campusId}</h4>
+        {
+          selectedCampus && (<h4>{selectedCampus.name}</h4>)
+        }
         <div>
           {
             studentsForCampus.map(student => <div key={student.id}>{student.name}</div>)
