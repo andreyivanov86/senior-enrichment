@@ -25,11 +25,17 @@ class EditStudent extends Component {
         <form>
           <label>Selecet Campus</label>
           <select name="campusName" >
-          {
-            //add campuses to option list
-            campuses && campuses.map(campus => <option key={campus.id} value={campus.id}>{campus.name}</option>)
-          }
-        </select>
+            {
+              //add campuses to option list
+              campuses && campuses.map(campus => <option key={campus.id} value={campus.id}>{campus.name}</option>)
+            }
+          </select>
+          <input
+            placeholder="Enter Name"
+            type="text"
+            name="studentName"
+          />
+          <button>Submit</button>
         </form>
       </div>
     )

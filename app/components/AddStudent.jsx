@@ -13,7 +13,7 @@ class AddStudent extends Component {
     const campuses = this.props.campuses;
     return (
       <div>
-        <div> Add Student </div>
+        <h4> Add Student </h4>
         <form onSubmit={this.props.handleSubmit}>
           <label>Select Campus</label>
           <select name="campusName" >
