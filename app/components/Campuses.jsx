@@ -18,7 +18,7 @@ class Campuses extends Component {
           campuses && campuses.map(campus => {
             return (
               <div key={campus.id}>
-                <Link to={`./campuses/${campus.id}`}>
+                <Link to={`/campuses/${campus.id}`}>
                 <span>{campus.name}</span>
                 </Link>
               </div>

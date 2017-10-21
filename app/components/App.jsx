@@ -17,7 +17,7 @@ export default class Main extends Component {
         <main>
           <Switch>
             <Route path='/add-student' component={AddStudent} />
-            <Route path='/edit-student' component={EditStudent} />
+            <Route path='/student/:id' component={EditStudent} />
             <Route path='/campuses/:id' component={CampusStudent} />
             <Route path='/campuses' component={Campuses} />
             <Route path='/students' component={Students} />

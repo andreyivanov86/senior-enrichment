@@ -24,7 +24,7 @@ class Students extends Component {
 
                 <button value={student.id} onClick={this.props.handleClick}>Delete</button>
 
-                <NavLink to={'/edit-student'}>
+                <NavLink to={`/student/${student.id}`}>
                   <button>Edit</button>
                 </NavLink>
               </div>
