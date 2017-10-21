@@ -5,6 +5,7 @@ import Campuses from './Campuses';
 import Students from './Students';
 import CampusStudent from './CampusStudent';
 import AddStudent from './AddStudent';
+import EditStudent from './EditStudent';
 
 // The main View
 export default class Main extends Component {
@@ -16,6 +17,7 @@ export default class Main extends Component {
         <main>
           <Switch>
             <Route path='/add-student' component={AddStudent} />
+            <Route path='/edit-student' component={EditStudent} />
             <Route path='/campuses/:id' component={CampusStudent} />
             <Route path='/campuses' component={Campuses} />
             <Route path='/students' component={Students} />

@@ -16,17 +16,21 @@ class Students extends Component {
         <NavLink to={'/add-student'}>
           <button>Add Student</button>
         </NavLink>
-          {
-            students && students.map(student => {
-              return (
-                <div>
-                  <div key={student.id}>{student.name}</div>
-                  <button value={student.id} onClick={this.props.handleClick}>Delete</button>
+        {
+          students && students.map(student => {
+            return (
+              <div>
+                <div key={student.id}>{student.name}</div>
+
+                <button value={student.id} onClick={this.props.handleClick}>Delete</button>
+
+                <NavLink to={'/edit-student'}>
                   <button>Edit</button>
-                </div>
-              )
-            })
-          }
+                </NavLink>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }

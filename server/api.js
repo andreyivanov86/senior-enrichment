@@ -65,14 +65,28 @@ api.get('/student/:id', (req, res, next) => {
 
 api.post('/student', (req, res, next) => {
 	db.models.student.create(req.body)
-	.then(newStudent => {res.status(201).json(newStudent)})
+	.then(newStudent => {
+		res.status(201).json(newStudent)
+	})
+	.catch(next)
+})
+
+api.put('/student/:id', (req, res, next) => {
+	db.models.student.update(req.body, {
+		where: {
+			id: req.params.id
+		}
+	})
+	.then(updatedStudent => console.log(updatedStudent))
+	.catch(next)
 })
 
 api.delete('/student/:id', (req, res, next) => {
 	db.models.student.destroy({
 		where: {
 			id: req.params.id
-		}
+		},
+		returning: true
 	})
 	.then(() => {
 		res.sendStatus(204)
