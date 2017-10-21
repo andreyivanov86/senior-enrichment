@@ -21,7 +21,8 @@ class Students extends Component {
               return (
                 <div>
                   <div key={student.id}>{student.name}</div>
-                  <button value={student.id} onClick={this.props.handleClick}>X</button>
+                  <button value={student.id} onClick={this.props.handleClick}>Delete</button>
+                  <button>Edit</button>
                 </div>
               )
             })
