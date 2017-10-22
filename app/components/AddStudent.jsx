@@ -15,7 +15,7 @@ class AddStudent extends Component {
       <div>
         <h4> Add Student </h4>
         <form onSubmit={this.props.handleSubmit}>
-          <label>Select Campus</label>
+          <label>Campus</label>
           <select name="campusName" >
             {
               //add campuses to option list

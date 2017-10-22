@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCampuses } from '../reducers/campuses';
-import { fetchStudents } from '../reducers/students'
+import { fetchStudents, updateStudent } from '../reducers/students'
 
 
 class EditStudent extends Component {
+
+  constructor(props) {
+    super(props);
+    //this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
   componentDidMount() {
     this.props.getCampuses();
@@ -12,18 +17,17 @@ class EditStudent extends Component {
   }
 
   render() {
+
     const studentId = Number(this.props.match.params.id);
     const studentsArr = this.props.students;
     const campuses = this.props.campuses;
-
     let studentToEdit = studentsArr.find(student => student.id === studentId);
-
     return (
       <div>
         <h4>Edit Student</h4>
         <h4>{studentToEdit && (<h4>{studentToEdit.name}</h4>)}</h4>
-        <form>
-          <label>Selecet Campus</label>
+        <form onSubmit={this.props.handleSubmit} name="form" value={studentId}>
+          <label>Campus</label>
           <select name="campusName" >
             {
               //add campuses to option list
@@ -34,13 +38,13 @@ class EditStudent extends Component {
             placeholder="Enter Name"
             type="text"
             name="studentName"
+            key="key"
           />
-          <button>Submit</button>
+          <button type="Submit" name="button" value={studentId}>Submit</button>
         </form>
       </div>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
@@ -60,10 +64,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSubmit(event) {
       event.preventDefault();
-      dispatch(postStudent({
+      let studentId = Number(event.target.button.value);
+      updateStudent(studentId, {
         name: event.target.studentName.value,
         campusId: event.target.campusName.value
-      }))
+      })
     }
   }
 }

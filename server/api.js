@@ -77,7 +77,7 @@ api.put('/student/:id', (req, res, next) => {
 			id: req.params.id
 		}
 	})
-	.then(updatedStudent => console.log(updatedStudent))
+	.then(() => res.sendStatus(204))
 	.catch(next)
 })
 

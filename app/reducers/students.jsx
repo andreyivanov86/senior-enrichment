@@ -5,25 +5,33 @@ const initialState = [];
 export const GET_STUDENTS = 'GET_STUDENTS';
 export const ADD_STUDENT = 'ADD_STUDENT';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
+export const EDIT_STUDENT = 'EDIT_STUDENT'
 // Action Creator
 export function getStudents(students) {
   const action = { type: GET_STUDENTS, students }
   return action;
 }
+
 export function addStudent(student) {
   const action = { type: ADD_STUDENT, student };
-  return action
+  return action;
 }
+
+export function editStudent(studentId) {
+  console.log('I am in action edit')
+  const action = { type: EDIT_STUDENT, studentId};
+  return action;
+}
+
 export function removeStudent(studentId) {
   const action = { type: DELETE_STUDENT, studentId };
-  return action
+  return action;
 }
 // Thunk Creator
 export function fetchStudents() {
-
   return function thunk(dispatch) {
     axios.get('/api/student')
-      .then(result => result.data)
+      .then(res => res.data)
       .then(students => {
         const action = getStudents(students);
         dispatch(action)
@@ -33,7 +41,6 @@ export function fetchStudents() {
 }
 
 export function postStudent(student) {
-
   return function thunk(dispatch) {
     axios.post('/api/student', student)
       .then(res => res.data)
@@ -44,8 +51,21 @@ export function postStudent(student) {
   }
 }
 
-export function deleteStudent(studentId) {
+export function updateStudent(studentId, newStudent) {
+  console.log('I am in update thunk');
+  console.log('/api/student/' + studentId)
+  console.log(newStudent)
+  return function thunk(dispatch) {
+    axios.put('/api/student/' + studentId, newStudent)
+    .then(res => {
+      console.log('res')
+      dispatch(editStudent(res.data));
+    })
+    .catch(err => console.log(err))
+  }
+}
 
+export function deleteStudent(studentId) {
   return function thunk(dispatch) {
     dispatch(removeStudent(studentId));
     axios.delete('/api/student/' + studentId)
@@ -65,6 +85,14 @@ export default function studentReducer(state = initialState, action) {
 
     case DELETE_STUDENT:
       return state.filter(student => student.id !== action.studentId);
+
+    case EDIT_STUDENT:
+      return state.map(student => {
+        console.log('I am in reducer')
+        // console.log('action', action)
+        // console.log('student', student)
+        return action.student.id === student.id ? action.student : student
+      })
 
     default: return state
   }
