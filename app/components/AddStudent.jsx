@@ -16,18 +16,19 @@ class AddStudent extends Component {
         <h4> Add Student </h4>
         <form onSubmit={this.props.handleSubmit}>
           <label>Campus</label>
-          <select name="campusName" >
+          <select name="campusName" style={{ margin: '5px' }}>
             {
               //add campuses to option list
               campuses && campuses.map(campus => <option key={campus.id} value={campus.id}>{campus.name}</option>)
             }
           </select>
           <input
+            style={{ margin: '5px' }}
             placeholder="Enter Name"
             type="text"
             name="studentName"
           />
-          <button type="submit">Submit</button>
+          <button style={{margin: '5px'}} type="submit">Submit</button>
         </form>
       </div>
     )
