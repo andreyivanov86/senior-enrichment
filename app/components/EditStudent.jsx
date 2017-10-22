@@ -6,11 +6,6 @@ import { fetchStudents, updateStudent } from '../reducers/students'
 
 class EditStudent extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   //this.handleSubmit = this.handleSubmit.bind(this)
-  // }
-
   componentDidMount() {
     this.props.getCampuses();
     this.props.getStudents();
@@ -38,7 +33,6 @@ class EditStudent extends Component {
             placeholder="Enter Name"
             type="text"
             name="studentName"
-            key="key"
           />
           <button type="Submit" name="button" value={studentId}>Submit</button>
         </form>
@@ -64,6 +58,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSubmit(event) {
       event.preventDefault();
+      console.log('i am in handle')
       let studentId = Number(event.target.button.value);
       updateStudent(studentId, {
         name: event.target.studentName.value,

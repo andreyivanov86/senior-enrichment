@@ -19,12 +19,12 @@ export function addStudent(student) {
 
 export function editStudent(studentId) {
   console.log('I am in action edit')
-  const action = { type: EDIT_STUDENT, studentId};
+  const action = { type: EDIT_STUDENT, studentId };
   return action;
 }
 
-export function removeStudent(studentId) {
-  const action = { type: DELETE_STUDENT, studentId };
+export function removeStudent(student) {
+  const action = { type: DELETE_STUDENT, student };
   return action;
 }
 // Thunk Creator
@@ -52,15 +52,15 @@ export function postStudent(student) {
 }
 
 export function updateStudent(studentId, newStudent) {
-  console.log('I am in update thunk');
-  // console.log(newStudent)
+  console.log('I am in update');
   return function thunk(dispatch) {
-    return axios.put('/api/student/' + studentId, newStudent)
-    .then(res => {
-      console.log(res.data)
-      dispatch(editStudent(res.data));
-    })
-    .catch(err => console.log(err))
+    console.log('I am now inside thunk')
+    axios.put('/api/student/' + studentId, newStudent)
+      .then(res => {
+        console.log('I am here')
+        dispatch(editStudent(res.data));
+      })
+      .catch(err => console.log(err))
   }
 }
 
@@ -90,7 +90,7 @@ export default function studentReducer(state = initialState, action) {
         console.log('I am in reducer')
         // console.log('action', action)
         // console.log('student', student)
-        return action.student.id === student.id ? action.student : student
+        return action.studentId.id === student.id ? action.studentId : student
       })
 
     default: return state
