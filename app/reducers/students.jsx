@@ -53,12 +53,11 @@ export function postStudent(student) {
 
 export function updateStudent(studentId, newStudent) {
   console.log('I am in update thunk');
-  console.log('/api/student/' + studentId)
-  console.log(newStudent)
+  // console.log(newStudent)
   return function thunk(dispatch) {
-    axios.put('/api/student/' + studentId, newStudent)
+    return axios.put('/api/student/' + studentId, newStudent)
     .then(res => {
-      console.log('res')
+      console.log(res.data)
       dispatch(editStudent(res.data));
     })
     .catch(err => console.log(err))

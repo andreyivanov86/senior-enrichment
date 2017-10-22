@@ -6,10 +6,10 @@ import { fetchStudents, updateStudent } from '../reducers/students'
 
 class EditStudent extends Component {
 
-  constructor(props) {
-    super(props);
-    //this.handleSubmit = this.handleSubmit.bind(this)
-  }
+  // constructor(props) {
+  //   super(props);
+  //   //this.handleSubmit = this.handleSubmit.bind(this)
+  // }
 
   componentDidMount() {
     this.props.getCampuses();

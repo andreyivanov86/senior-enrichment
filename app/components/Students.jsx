@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { fetchCampuses } from '../reducers/campuses';
+
 import { fetchStudents, deleteStudent } from '../reducers/students'
 
 class Students extends Component {
 
   componentDidMount() {
+    this.props.getCampuses();
     this.props.getStudents();
   }
 
+
   render() {
-    const { students } = this.props;
+    const students = this.props.students;
+    const campuses = this.props.campuses;
+
     return (
       <div>
         <NavLink to={'/add-student'}>
@@ -19,14 +25,20 @@ class Students extends Component {
         {
           students && students.map(student => {
             return (
-              <div>
-                <div key={student.id}>{student.name}</div>
+              <div key={student.id} style={{display: 'flex'}}>
 
-                <button value={student.id} onClick={this.props.handleClick}>Delete</button>
+                <div style={{margin: '5px'}}>{student.name}</div>
+
+                <div style={{margin: '5px'}}>
+                  {campuses && campuses.find(campus => campus.id === student.campusId).name}
+                </div>
+
+                <button style={{margin: '5px'}} value={student.id} onClick={this.props.handleClick}>Delete</button>
 
                 <NavLink to={`/student/${student.id}`}>
-                  <button>Edit</button>
+                  <button style={{margin: '5px'}}>Edit</button>
                 </NavLink>
+
               </div>
             )
           })
@@ -38,12 +50,16 @@ class Students extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    students: state.students
+    students: state.students,
+    campuses: state.campuses
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getCampuses() {
+      dispatch(fetchCampuses())
+    },
     getStudents() {
       dispatch(fetchStudents())
     },

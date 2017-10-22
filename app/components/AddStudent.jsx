@@ -50,7 +50,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(postStudent({
         name: event.target.studentName.value,
         campusId: event.target.campusName.value
-      }))
+      }));
+      event.target.studentName.value = null;
     }
   }
 }
