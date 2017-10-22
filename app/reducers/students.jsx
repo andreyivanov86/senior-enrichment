@@ -23,8 +23,8 @@ export function editStudent(studentId) {
   return action;
 }
 
-export function removeStudent(student) {
-  const action = { type: DELETE_STUDENT, student };
+export function removeStudent(studentId) {
+  const action = { type: DELETE_STUDENT, studentId };
   return action;
 }
 // Thunk Creator

@@ -25,18 +25,18 @@ class Students extends Component {
         {
           students && students.map(student => {
             return (
-              <div key={student.id} style={{display: 'flex'}}>
+              <div key={student.id} style={{ display: 'flex' }}>
 
-                <div style={{margin: '5px'}}>{student.name}</div>
+                <div style={{ margin: '5px' }}>{student.name}</div>
 
-                <div style={{margin: '5px'}}>
+                <div style={{ margin: '5px' }}>
                   {campuses && campuses.find(campus => campus.id === student.campusId).name}
                 </div>
 
-                <button style={{margin: '5px'}} value={student.id} onClick={this.props.handleClick}>Delete</button>
+                <button style={{ margin: '5px' }} value={student.id} onClick={this.props.handleClick}>Delete</button>
 
                 <NavLink to={`/student/${student.id}`}>
-                  <button style={{margin: '5px'}}>Edit</button>
+                  <button style={{ margin: '5px' }}>Edit</button>
                 </NavLink>
 
               </div>
