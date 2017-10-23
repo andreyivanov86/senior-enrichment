@@ -49,6 +49,19 @@ api.put('/campus/:id', (req, res, next) => {
 	.catch(next)
 })
 
+api.delete('/campus/:id', (req, res, next) => {
+	db.models.campus.destroy({
+		where: {
+			id: req.params.id
+		},
+		returning: true
+	})
+	.then(() => {
+		res.sendStatus(204)
+	})
+	.catch(next)
+})
+
 api.get('/student', (req, res, next) => {
 	db.models.student.findAll()
 	.then(students => {

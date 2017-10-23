@@ -22,8 +22,8 @@ export function removeCampus(campus) {
   return action;
 }
 
-export function editCampus(campusId) {
-  const action = { type: EDIT_CAMPUS, campusId };
+export function editCampus(campus) {
+  const action = { type: EDIT_CAMPUS, campus };
   return action;
 }
 // Thunk Creator
@@ -62,9 +62,10 @@ export function updateCampus(campusId, newCampus) {
 }
 
 export function deleteCampus(campusId) {
+  console.log('in thunk', campusId)
   return function thunk(dispatch) {
     dispatch(removeCampus(campusId));
-    axios.delete('/api/student/' + campusId)
+    axios.delete('/api/campus/' + campusId)
       .catch(err => console.log(err))
   }
 }
@@ -80,8 +81,13 @@ export default function campusReducer(state = initialState, action) {
 
     case EDIT_CAMPUS:
       return state.map(campus => {
-        return action.campusId.id === campus.id ? action.campusId : campus
+        return action.campus.id === campus.id ? action.campus : campus
       })
+
+    case DELETE_CAMPUS:
+    return state.filter(campus => {
+      return campus.id !== action.campus
+    })
 
     default: return state
   }

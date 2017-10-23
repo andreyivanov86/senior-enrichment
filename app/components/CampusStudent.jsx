@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { fetchStudents } from '../reducers/students';
-import { fetchCampuses, updateCampus } from '../reducers/campuses';
+import { fetchStudents, removeStudents } from '../reducers/students';
+import { fetchCampuses, updateCampus, deleteCampus } from '../reducers/campuses';
 
 
 class CampusStudent extends Component {
@@ -58,7 +58,7 @@ class CampusStudent extends Component {
         </form>
       </div>
 
-        <button style={{ margin: '5px' }}>Delete Campus</button>
+        <button style={{ margin: '5px' }} value={campusId} onClick={(event) => this.props.handleClick(event, studentsArr)}>Delete Campus</button>
         <div>
           <h4>Students: </h4>
           {
@@ -108,6 +108,13 @@ const mapDispatchToProps = (dispatch) => {
       }));
       event.target.campusName.value = null;
       event.target.campusImage.value= null;
+    },
+    handleClick(event, students) {
+      event.preventDefault();
+      const campusId = Number(event.target.value);
+      let studentsToKeep = students.filter(student => student.campusId !== campusId)
+      dispatch(deleteCampus(campusId));
+      dispatch(removeStudents(studentsToKeep))
     }
   }
 }
