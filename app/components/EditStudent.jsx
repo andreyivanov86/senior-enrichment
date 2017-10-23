@@ -60,10 +60,10 @@ const mapDispatchToProps = (dispatch) => {
       event.preventDefault();
       console.log('i am in handle')
       let studentId = Number(event.target.button.value);
-      updateStudent(studentId, {
+      dispatch(updateStudent(studentId, {
         name: event.target.studentName.value,
         campusId: event.target.campusName.value
-      })
+      }))
     }
   }
 }

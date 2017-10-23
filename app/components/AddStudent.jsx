@@ -47,6 +47,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(fetchCampuses())
     },
     handleSubmit(event) {
+      console.log('I am in handler')
       event.preventDefault();
       dispatch(postStudent({
         name: event.target.studentName.value,

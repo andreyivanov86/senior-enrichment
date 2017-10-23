@@ -4,6 +4,7 @@ const initialState = [];
 //Action Types
 export const GET_CAMPUSES = 'GET_CAMPUSES';
 export const ADD_CAMPUS = 'ADD_CAMPUS';
+export const DELETE_CAMPUS = 'DELETE_CAMPUS';
 // Action Creator
 export function getCampuses(campuses) {
   const action = { type: GET_CAMPUSES, campuses }
@@ -12,6 +13,11 @@ export function getCampuses(campuses) {
 
 export function addCampus(campus) {
   const action = { type: ADD_CAMPUS, campus };
+  return action;
+}
+
+export function removeCampus(campus) {
+  const action = { type: DELETE_CAMPUS, campus };
   return action;
 }
 // Thunk Creator
@@ -35,6 +41,14 @@ export function postCampus(campus) {
       .then(newCampus => {
         dispatch(addCampus(newCampus));
       })
+      .catch(err => console.log(err))
+  }
+}
+
+export function deleteCampus(campusId) {
+  return function thunk(dispatch) {
+    dispatch(removeCampus(campusId));
+    axios.delete('/api/student/' + campusId)
       .catch(err => console.log(err))
   }
 }

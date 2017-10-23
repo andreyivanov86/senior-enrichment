@@ -24,6 +24,7 @@ class CampusStudent extends Component {
 
     let studentsForCampus = [];
     studentsForCampus = studentsArr.filter(student => student.campusId === campusId);
+    console.log(selectedCampus)
 
     return (
       <div>
@@ -32,6 +33,7 @@ class CampusStudent extends Component {
             selectedCampus && (<h4>{selectedCampus.name}</h4>)
           }
         </div>
+        <button style={{ margin: '5px' }}>Delete Campus</button>
         <div>
           {
             studentsForCampus.map(student => {
@@ -46,9 +48,11 @@ class CampusStudent extends Component {
             })
           }
         </div>
-        <NavLink to={'/add-student'}>
-          <button>Add Student</button>
-        </NavLink>
+        <div>
+          <NavLink to={'/add-student'}>
+            <button>Add Student</button>
+          </NavLink>
+        </div>
       </div>
     )
   }
