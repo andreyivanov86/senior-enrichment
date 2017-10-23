@@ -18,7 +18,6 @@ export function addStudent(student) {
 }
 
 export function editStudent(studentId) {
-  console.log('I am in action edit')
   const action = { type: EDIT_STUDENT, studentId };
   return action;
 }
@@ -52,12 +51,9 @@ export function postStudent(student) {
 }
 
 export function updateStudent(studentId, newStudent) {
-  console.log('I am in update');
   return function thunk(dispatch) {
-    console.log('I am now inside thunk')
     axios.put('/api/student/' + studentId, newStudent)
       .then(res => {
-        console.log('I am here')
         dispatch(editStudent(res.data));
       })
       .catch(err => console.log(err))
@@ -87,9 +83,6 @@ export default function studentReducer(state = initialState, action) {
 
     case EDIT_STUDENT:
       return state.map(student => {
-        console.log('I am in reducer')
-        // console.log('action', action)
-        // console.log('student', student)
         return action.studentId.id === student.id ? action.studentId : student
       })
 
