@@ -105,7 +105,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(updateCampus(campusId, {
         name: event.target.campusName.value,
         url: event.target.campusImage.value
-      }))
+      }));
+      event.target.campusName.value = null;
+      event.target.campusImage.value= null;
     }
   }
 }
