@@ -70,14 +70,6 @@ api.get('/student', (req, res, next) => {
 	.catch(next)
 })
 
-api.get('/student', (req, res, next) => {
-	db.models.student.findAll()
-	.then(students => {
-	res.json(students)
-	})
-	.catch(next)
-})
-
 api.get('/student/:id', (req, res, next) => {
 	db.models.student.findById((req.params.id))
 	.then(student => {
