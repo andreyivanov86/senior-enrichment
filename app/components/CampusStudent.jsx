@@ -46,6 +46,9 @@ class CampusStudent extends Component {
             })
           }
         </div>
+        <NavLink to={'/add-student'}>
+          <button>Add Student</button>
+        </NavLink>
       </div>
     )
   }
