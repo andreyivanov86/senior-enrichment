@@ -58,7 +58,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSubmit(event) {
       event.preventDefault();
-      console.log('i am in handle')
       let studentId = Number(event.target.button.value);
       dispatch(updateStudent(studentId, {
         name: event.target.studentName.value,
