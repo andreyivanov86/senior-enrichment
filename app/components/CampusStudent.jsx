@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchStudents } from '../reducers/students';
-import { fetchCampuses } from '../reducers/campuses';
+import { fetchCampuses, updateCampus } from '../reducers/campuses';
 
 
 class CampusStudent extends Component {
@@ -24,7 +24,7 @@ class CampusStudent extends Component {
 
     let studentsForCampus = [];
     studentsForCampus = studentsArr.filter(student => student.campusId === campusId);
-    console.log(selectedCampus)
+    // console.log(selectedCampus)
 
     return (
       <div>
@@ -33,8 +33,34 @@ class CampusStudent extends Component {
             selectedCampus && (<h4>{selectedCampus.name}</h4>)
           }
         </div>
+        <h4>Edit Campus</h4>
+        <div>
+        <form onSubmit={this.props.handleSubmit}>
+          <div>
+            <label>Campus Name</label>
+            <input
+              style={{ margin: '5px' }}
+              placeholder="Enter Name"
+              type="text"
+              name="campusName"
+            />
+          </div>
+          <div>
+            <label>Logo</label>
+            <input
+              style={{ margin: '5px' }}
+              placeholder="Enter URL"
+              type="text"
+              name="campusImage"
+            />
+          </div>
+          <button style={{ margin: '5px' }} type="submit" name="button" value={campusId}>Submit</button>
+        </form>
+      </div>
+
         <button style={{ margin: '5px' }}>Delete Campus</button>
         <div>
+          <h4>Students: </h4>
           {
             studentsForCampus.map(student => {
               return (
@@ -72,6 +98,14 @@ const mapDispatchToProps = (dispatch) => {
     },
     getCampuses() {
       dispatch(fetchCampuses())
+    },
+    handleSubmit(event) {
+      event.preventDefault();
+      let campusId = Number(event.target.button.value);
+      dispatch(updateCampus(campusId, {
+        name: event.target.campusName.value,
+        url: event.target.campusImage.value
+      }))
     }
   }
 }

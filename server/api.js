@@ -39,6 +39,16 @@ api.post('/campus', (req, res, next) => {
 	.catch(next)
 })
 
+api.put('/campus/:id', (req, res, next) => {
+	db.models.campus.update(req.body, {
+		where: {
+			id: req.params.id
+		}
+	})
+	.then(() => res.sendStatus(204))
+	.catch(next)
+})
+
 api.get('/student', (req, res, next) => {
 	db.models.student.findAll()
 	.then(students => {
