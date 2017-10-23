@@ -19,8 +19,8 @@ class EditStudent extends Component {
     let studentToEdit = studentsArr.find(student => student.id === studentId);
     return (
       <div>
-        <h4>Edit Student</h4>
         <h4>{studentToEdit && (<h4>{studentToEdit.name}</h4>)}</h4>
+        <div>Edit Student</div>
         <form onSubmit={this.props.handleSubmit} name="form" value={studentId}>
           <label>Campus</label>
           <select name="campusName" >

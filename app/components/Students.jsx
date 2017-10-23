@@ -36,7 +36,7 @@ class Students extends Component {
                 <button style={{ margin: '5px' }} value={student.id} onClick={this.props.handleClick}>Delete</button>
 
                 <NavLink to={`/student/${student.id}`}>
-                  <button style={{ margin: '5px' }}>Edit</button>
+                  <button style={{ margin: '5px' }}>View</button>
                 </NavLink>
 
               </div>

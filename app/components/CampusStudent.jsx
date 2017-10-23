@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { fetchStudents } from '../reducers/students';
 import { fetchCampuses } from '../reducers/campuses';
 
@@ -26,12 +27,23 @@ class CampusStudent extends Component {
 
     return (
       <div>
-        {
-          selectedCampus && (<h4>{selectedCampus.name}</h4>)
-        }
         <div>
           {
-            studentsForCampus.map(student => <div key={student.id}>{student.name}</div>)
+            selectedCampus && (<h4>{selectedCampus.name}</h4>)
+          }
+        </div>
+        <div>
+          {
+            studentsForCampus.map(student => {
+              return (
+                <div style={{ display: 'flex' }}>
+                  <div key={student.id}>{student.name}</div>
+                  <NavLink to={`/student/${student.id}`}>
+                    <button style={{ margin: '5px' }}>View</button>
+                  </NavLink>
+                </div>
+              )
+            })
           }
         </div>
       </div>
